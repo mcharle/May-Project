@@ -1,0 +1,38 @@
+$blue: #3BBFCE;
+$margin: 16px;
+$purple: #7D26CD;
+$green: #9CBA7F;
+$white: #FFFFFF;
+
+body {
+	background-color: $white;
+	//float: left;
+  	//margin-left: $dist
+	//background-image: url("nutella.png");
+}
+
+.top {
+	background-color: $blue;
+	text-align: center;
+	color: $white;
+	height: 80px;
+	width: 75%;
+	margin: 20px;
+}
+
+.navbar {
+  float: left;
+  width: 8%;
+  height: 200px;
+  background-color: $blue;
+  ul{
+  	text-align: right;
+  	float: right;
+  	margin: 10px;
+  }
+}
+
+.blah {
+	background-color: $green;
+
+}
