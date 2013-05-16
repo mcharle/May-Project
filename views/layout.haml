@@ -1,5 +1,22 @@
 %html
-	%head
-		%link{rel: 'stylesheet', href: '/style.css'}
-	%body
-		=yield
+  %head
+    %link{rel: 'stylesheet', href: '/style.css'}
+  %body
+    .container
+      .top
+        %h1 #{$title}
+      %br
+      /%img{src: "images/nutella.png"}
+      .navbar
+        %ul
+          %a{href: "http://cs.ucls.uchicago.edu/~mcharle"} Me
+        %ul 
+          %a{href: "http://cs.ucls.uchicago.edu/~mcharle/phpTest/login.php"} Fettc
+        %ul 
+          %a{href: "/about"} About
+        %ul 
+          %a{href: "/faq"} FAQ
+        %ul 
+          %a{href: "/"} Home
+
+      =yield
