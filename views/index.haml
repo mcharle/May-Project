@@ -1,32 +1,34 @@
+- $pagetitle = "May Project"
 .sidebar
   .title
-    Helpful links
+    Helpful links:
   %a{href:'http://gravitytank.com'} gravitytank 
+  %a{href:'http://dscout.com'} dscout
+
 .post
   .date
-    5/14
+    5/14/2013
   .title
-    Post
+    Sample Post
   .picture
     %img{src: "images/friends.jpg", height: "260"}
   .content
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci ipsum, commodo eu imperdiet sed, vehicula eget urna. Sed imperdiet rutrum ipsum quis tempus. Vestibulum at sem ligula. Morbi libero est, adipiscing nec molestie id, venenatis sed urna. Aenean at arcu magna. Nullam id massa nec nulla elementum vulputate nec nec lectus. Nam tortor quam, elementum interdum lobortis vestibulum, placerat vitae lectus. Aliquam aliquet, lorem eget iaculis suscipit, sapien enim elementum mauris, ac ornare est leo nec neque. Curabitur tempus magna eu mauris vestibulum dapibus. In eu augue ante. Vivamus mollis posuere ante eu dignissim. Suspendisse id nulla lorem, ut molestie odio. Donec risus nisi, pulvinar ac tincidunt id, mollis ac mauris. Aliquam molestie blandit nibh, at iaculis mi euismod ac. Maecenas sed neque nec ipsum bibendum sodales. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
 
-.post
-  .date
-    5/14
-  .title
-    Post
-  .picture
-    %img{src: "images/friends.jpg", height: "260"}
-  .content
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci ipsum, commodo eu imperdiet sed, vehicula eget urna. Sed imperdiet rutrum ipsum quis tempus. Vestibulum at sem ligula. Morbi libero est, adipiscing nec molestie id, venenatis sed urna. Aenean at arcu magna. Nullam id massa nec nulla elementum vulputate nec nec lectus. Nam tortor quam, elementum interdum lobortis vestibulum, placerat vitae lectus.
-.post
-  .date
-    5/14
-  .title
-    Post
-  .picture
-    %img{src: "images/friends.jpg", height: "260"}
-  .content
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci ipsum, commodo eu imperdiet sed, vehicula eget urna. Sed imperdiet rutrum ipsum quis tempus. Vestibulum at sem ligula. Morbi libero est, adipiscing nec molestie id, venenatis sed urna. Aenean at arcu magna. Nullam id massa nec nulla elementum vulputate nec nec lectus. Nam tortor quam, elementum interdum lobortis vestibulum, placerat vitae lectus. Aliquam aliquet, lorem eget iaculis suscipit, sapien enim elementum mauris, ac ornare est leo nec neque. Curabitur tempus magna eu mauris vestibulum dapibus. In eu augue ante. Vivamus mollis posuere ante eu dignissim. Suspendisse id nulla lorem, ut molestie odio. Donec risus nisi, pulvinar ac tincidunt id, mollis ac mauris. Aliquam molestie blandit nibh, at iaculis mi euismod ac. Maecenas sed neque nec ipsum bibendum sodales. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci ipsum, commodo eu imperdiet sed, vehicula eget urna. Sed imperdiet rutrum ipsum quis tempus. Vestibulum at sem ligula. Morbi libero est, adipiscing nec molestie id, venenatis sed urna. Aenean at arcu magna. Nullam id massa nec nulla elementum vulputate nec nec lectus. Nam tortor quam, elementum interdum lobortis vestibulum, placerat vitae lectus.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci ipsum, commodo eu imperdiet sed, vehicula eget urna. Sed imperdiet rutrum ipsum quis tempus. Vestibulum at sem ligula. Morbi libero est, adipiscing nec molestie id, venenatis sed urna. Aenean at arcu magna. Nullam id massa nec nulla elementum vulputate nec nec lectus. Nam tortor quam, elementum interdum lobortis vestibulum, placerat vitae lectus.
+- @posts.each do |post|
+  .post
+    .date= "#{post.date.month}/#{post.date.day}/#{post.date.year}"
+    .title= post.title 
+    .content= post.content
+
+
+/ - posts_in_order = Post.all(:order => :date.desc)
+/ - for post in posts_in_order
+/ - $title = post.title
+/ - $content = post.content
+/ - $date = post.date
+/   .post
+/     .date= "#{$date.month}/#{$date.day}/#{$date.year}"
+/     .title= $title
+/     .picture= ""
+/     .content= $content

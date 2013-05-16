@@ -33,15 +33,28 @@ get '/style.css' do
 end
 
 get '/' do
+  @posts = Post.all(:order => :date.desc)
+
 	haml :index
 end
 
 get '/post/new' do
   haml :post_new
+  #"Hello, world!"
 end
 
-get '/post/create' do
-  post = Post.new(title: params[:title])
+post '/post/create' do
+  post = Post.new(title: params[:title], 
+                  date: params[:date],
+                  content: params[:content])
+  post.save
+
+  if post.save
+    status 201
+    redirect '/'
+  else
+    redirect '/post/new'
+  end
 end
 
 get '/about' do
