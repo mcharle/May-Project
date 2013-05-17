@@ -43,6 +43,11 @@ get '/post/new' do
   #"Hello, world!"
 end
 
+delete '/post/:id' do
+  Post.find(params[:id]).first.destroy
+  redirect '/'
+end
+
 post '/post/create' do
   post = Post.new(title: params[:title], 
                   date: params[:date],

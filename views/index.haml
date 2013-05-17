@@ -20,7 +20,9 @@
     .date= "#{post.date.month}/#{post.date.day}/#{post.date.year}"
     .title= post.title 
     .content= post.content
-    %a{href: "post/delete?id=#{post.id}"} delete
+    %form{action: "/post/#{post.id}", method: "post"}
+      %input{type: 'submit', name: "_method", value: 'delete', class: 'button'}
+      %input{type: 'hidden', value: '_method', method: 'delete'}
 
 / - posts_in_order = Post.all(:order => :date.desc)
 / - for post in posts_in_order
