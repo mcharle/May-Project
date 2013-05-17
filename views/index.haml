@@ -20,7 +20,7 @@
     .date= "#{post.date.month}/#{post.date.day}/#{post.date.year}"
     .title= post.title 
     .content= post.content
-
+    %a{href: "post/delete?id=#{post.id}"} delete
 
 / - posts_in_order = Post.all(:order => :date.desc)
 / - for post in posts_in_order
