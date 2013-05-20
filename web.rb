@@ -43,15 +43,27 @@ get '/post/new' do
   #"Hello, world!"
 end
 
-delete '/post/:id' do
-  if params[:method] == "edit"
-    @post = Post.find(params[:id])
-    redirect '/post/new'
-  end
-  elsif params[:method] == "delete"
-    Post.find(params[:id]).first.destroy
+get '/post/:id/edit' do
+  @post = Post.get(params[:id])
+  haml :post_edit
+end
+
+post '/post/update' do
+  @post.title = params[:title]
+  @post.date = params[:date]
+  @post.content = params[:content]
+  post.save
+  if post.save
+    status 201
     redirect '/'
+  else
+    redirect '/post/params[:id]/edit'
   end
+end
+
+delete '/post/:id' do
+  Post.find(params[:id]).first.destroy
+  redirect '/'
 end
 
 post '/post/create' do
