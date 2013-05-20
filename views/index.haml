@@ -20,9 +20,8 @@
     .date= "#{post.date.month}/#{post.date.day}/#{post.date.year}"
     .title= post.title 
     .content= post.content
-    %form{action: "/post/#{post.id}", method: "post"}
-      %input{type: 'submit', name: "_method", value: 'delete', class: 'button'}
-      %input{type: 'hidden', value: '_method', method: 'edit'}
+    %form{action: "/post/#{post.id}/edit", method: "get"}
+      %input{type: 'submit', name: "_method", value: 'edit', class: 'button'}
     %form{action: "/post/#{post.id}", method: "post"}
       %input{type: 'submit', name: "_method", value: 'delete', class: 'button'}
       %input{type: 'hidden', value: '_method', method: 'delete'}
