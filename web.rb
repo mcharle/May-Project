@@ -20,10 +20,11 @@ class Post
   property :title,      String
   property :date,       Date
   property :content,    Text
+  property :tag,       String
   
   mount_uploader :image, PostpicUploader
 
-  has n, :tags
+  has n, :posts, :through => Resource
 
 end
 
@@ -33,6 +34,8 @@ class Tag
 
   property :id,       Serial
   property :category, String
+
+  has n, :tags, :through => Resource
 end
 
 DataMapper.finalize
@@ -61,9 +64,9 @@ get '/post/:id/edit' do
   haml :post_edit
 end
 
-put '/post/:id/update' do
-  @post = Post.find(params[:id])
-  if @post.update_attributes(params[:post])
+put '/post/:id' do
+  @post = Post.find(params[:id]).first
+  if @post.update(params[:post])
     status 201
     redirect '/'
   else

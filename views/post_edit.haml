@@ -1,14 +1,15 @@
 - $pagetitle = "Edit Post"
 .container
-  %form{action: "/post/update", method: "post"}
+  %form{action: "/post/#{@post.id}", method: "post"}
+    %input{type: 'hidden', value: 'put', name: '_method'}
     Title:
-    %input{type: "text", name: "title", placeholder: "title", value: @post.title}
+    %input{type: "text", name: "post[title]", placeholder: "title", value: @post.title}
     %br
     Date:
-    %input{type: "date", name: "date", value: @post.date}
+    %input{type: "date", name: "post[date]", value: @post.date}
     %br
     Content:
     %br
-    %textarea{name: "content", rows: "10", cols: "20"} #{@post.content}
+    %textarea{name: "post[content]", rows: "10", cols: "20"} #{@post.content}
     %br
     %input{type: "submit", value: "Edit Post"}
