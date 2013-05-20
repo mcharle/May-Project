@@ -44,8 +44,14 @@ get '/post/new' do
 end
 
 delete '/post/:id' do
-  Post.find(params[:id]).first.destroy
-  redirect '/'
+  if params[:method] == "edit"
+    @post = Post.find(params[:id])
+    redirect '/post/new'
+  end
+  elsif params[:method] == "delete"
+    Post.find(params[:id]).first.destroy
+    redirect '/'
+  end
 end
 
 post '/post/create' do
