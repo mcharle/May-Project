@@ -75,7 +75,7 @@ put '/post/:id' do
 end
 
 get '/post/:id' do
-  @foo = Post.get(params[:id])
+  @post = Post.get(params[:id])
   haml :post_id
 end
 

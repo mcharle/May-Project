@@ -20,7 +20,7 @@
     .title= post.title 
     .content= post.content
     .picture
-      %img{src:"#{post.image}", height: "260"}
+      %img{src:"#{post.image}"}
     %form{action: "/post/#{post.id}/edit", method: "get"}
       %input{type: 'submit', name: "_method", value: 'edit', class: 'button'}
     %form{action: "/post/#{post.id}", method: "post"}
