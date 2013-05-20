@@ -1,6 +1,6 @@
 - $pagetitle = "New Post"
 .container
-  %form{action: "/post/create", method: "post"}
+  %form{action: "/post/create", method: "post", enctype: "multipart/form-data"}
     Title:
     %input{type: "text", name: "title", placeholder: "title"}
     %br
@@ -10,5 +10,7 @@
     Content:
     %br
     %textarea{name: "content", rows: "10", cols: "20"}
+    %br
+    %input{type: "file", name: "image"}
     %br
     %input{type: "submit", value: "Create Post"}

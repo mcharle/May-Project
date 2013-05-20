@@ -4,17 +4,29 @@ Bundler.require
 
 DataMapper.setup(:default, 'sqlite:///Users/merylcharleston/Documents/mayproject/db/mp.db')
 
+#require_relative "lib/postpic_uploader"
+
+class PostpicUploader < CarrierWave::Uploader::Base
+  storage :file
+  def store_dir
+    'uploads'
+  end
+end
+
 class Post
   include DataMapper::Resource
 
-  property :id,       Serial
-  property :title,    String
-  property :date,     Date
-  property :content,  Text
+  property :id,         Serial
+  property :title,      String
+  property :date,       Date
+  property :content,    Text
+  
+  mount_uploader :image, PostpicUploader
 
   has n, :tags
 
 end
+
 
 class Tag
   include DataMapper::Resource
@@ -33,6 +45,7 @@ get '/style.css' do
 end
 
 get '/' do
+  @pagetitle = "May Project"
   @posts = Post.all(:order => :date.desc)
 
 	haml :index
@@ -48,17 +61,19 @@ get '/post/:id/edit' do
   haml :post_edit
 end
 
-post '/post/update' do
-  @post.title = params[:title]
-  @post.date = params[:date]
-  @post.content = params[:content]
-  post.save
-  if post.save
+put '/post/:id/update' do
+  @post = Post.find(params[:id])
+  if @post.update_attributes(params[:post])
     status 201
     redirect '/'
   else
-    redirect '/post/params[:id]/edit'
+    redirect '/post/#{@post.id}/edit'
   end
+end
+
+get '/post/:id' do
+  @foo = Post.get(params[:id])
+  haml :post_id
 end
 
 delete '/post/:id' do
@@ -67,10 +82,7 @@ delete '/post/:id' do
 end
 
 post '/post/create' do
-  post = Post.new(title: params[:title], 
-                  date: params[:date],
-                  content: params[:content])
-  post.save
+  post = Post.new(params)
 
   if post.save
     status 201

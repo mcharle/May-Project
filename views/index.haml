@@ -1,4 +1,3 @@
-- $pagetitle = "May Project"
 .sidebar
   .title
     Helpful links:
@@ -20,19 +19,10 @@
     .date= "#{post.date.month}/#{post.date.day}/#{post.date.year}"
     .title= post.title 
     .content= post.content
+    .picture
+      %img{src:"#{post.image}", height: "260"}
     %form{action: "/post/#{post.id}/edit", method: "get"}
       %input{type: 'submit', name: "_method", value: 'edit', class: 'button'}
     %form{action: "/post/#{post.id}", method: "post"}
       %input{type: 'submit', name: "_method", value: 'delete', class: 'button'}
       %input{type: 'hidden', value: '_method', method: 'delete'}
-
-/ - posts_in_order = Post.all(:order => :date.desc)
-/ - for post in posts_in_order
-/ - $title = post.title
-/ - $content = post.content
-/ - $date = post.date
-/   .post
-/     .date= "#{$date.month}/#{$date.day}/#{$date.year}"
-/     .title= $title
-/     .picture= ""
-/     .content= $content
