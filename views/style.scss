@@ -35,7 +35,7 @@ img {
 .sidebar {
   float: right;
   height: 200px;
-  width: 12%;
+  width: 12.9%;
   padding: 10px;
   margin-right: 40px;
   margin-top: 20px;
@@ -79,6 +79,11 @@ img {
     //background-color: #FFAA00;
     padding: 10px;
     margin: 20px;
+  }
+  .thumbnail{
+    width: 30px;
+    padding: 10px;
+    margin: 0 auto;
   }
   .picture{
     //background-color: $purple;
