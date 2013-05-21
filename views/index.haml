@@ -1,6 +1,5 @@
 .sidebar
-  .thumbnail
-    %img{src: "images/me.png", width: "100"}
+  %img{src: "images/me.png", width: "60", class: 'thumbnail'}
 
 .post
   .date
@@ -15,7 +14,8 @@
 - @posts.each do |post|
   .post
     .date= "#{post.date.month}/#{post.date.day}/#{post.date.year}"
-    .title= post.title 
+    .title
+      %a{href: "/post/#{post.id}"}= post.title 
     .content= post.content
     .picture
       %img{src:"#{post.image}"}

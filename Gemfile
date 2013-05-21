@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'data_mapper'
+gem 'dm-sqlite-adapter'
+gem 'haml'
+gem 'sass'
+gem 'shotgun'
+gem 'sinatra'
+gem 'carrierwave'
+gem 'carrierwave-datamapper'
