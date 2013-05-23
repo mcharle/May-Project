@@ -20,7 +20,8 @@ class Post
   property :title,      String
   property :date,       Date
   property :content,    Text
-  property :tag,       String
+  property :tag,        String
+  property :time,       Time
   
   mount_uploader :image, PostpicUploader
 
@@ -55,11 +56,13 @@ get '/' do
 end
 
 get '/post/new' do
+  @pagetitle = "New Post"
   haml :post_new
   #"Hello, world!"
 end
 
 get '/post/:id/edit' do
+  @pagetitle = "Edit Post"
   @post = Post.get(params[:id])
   haml :post_edit
 end
@@ -75,6 +78,7 @@ put '/post/:id' do
 end
 
 get '/post/:id' do
+  @pagetitle = "Post #{params[:id]}"
   @post = Post.get(params[:id])
   haml :post_id
 end
@@ -95,10 +99,12 @@ post '/post/create' do
   end
 end
 
-get '/about' do
-	haml :about
+get '/commute' do
+  @pagetitle = "My Daily Commute"
+	haml :commute
 end
 
 get '/faq' do
+  @pagetitle = "FAQ"
   haml :faq
 end

@@ -1,11 +1,14 @@
-- $pagetitle = "New Post"
 .container
+  %br
   %form{action: "/post/create", method: "post", enctype: "multipart/form-data"}
     Title:
     %input{type: "text", name: "title", placeholder: "title"}
     %br
     Date:
     %input{type: "date", name: "date"}
+    %br
+    Time:
+    %input{type: "time", name: "time"}
     %br
     Content:
     %br
