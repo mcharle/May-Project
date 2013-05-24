@@ -17,14 +17,25 @@
 
 - @posts.each do |post|
   .post
-    .date= "#{post.date.month}/#{post.date.day}/#{post.date.year}"
+    .date= "#{post.datetime.to_date.month}/#{post.datetime.to_date.day}/#{post.datetime.to_date.year}"
     .title
       %a{href: "/post/#{post.id}"}= post.title 
     .content= post.content
     .picture
       %img{src:"#{post.image}"}
     %form{action: "/post/#{post.id}/edit", method: "get"}
-      %input{type: 'submit', name: "_method", value: 'edit', class: 'button'}
+      %input{type: 'submit', value: 'Edit', class: 'button'}
     %form{action: "/post/#{post.id}", method: "post"}
       %input{type: 'submit', name: "_method", value: 'delete', class: 'button'}
       %input{type: 'hidden', value: '_method', method: 'delete'}
+
+%script{src: "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"}
+:javascript
+    $(window).load(function(){
+      $('content').removeClass
+    });
+
+
+
+
+

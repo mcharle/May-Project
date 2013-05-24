@@ -18,11 +18,12 @@ class Post
 
   property :id,         Serial
   property :title,      String
-  property :date,       Date
+  # property :date,       Date
   property :content,    Text
   property :tag,        String
-  property :time,       Time
-  
+  # property :time,       Time
+  property :datetime,   DateTime
+
   mount_uploader :image, PostpicUploader
 
   has n, :posts, :through => Resource
@@ -50,7 +51,7 @@ end
 
 get '/' do
   @pagetitle = "May Project"
-  @posts = Post.all(:order => :date.desc)
+  @posts = Post.all(:order => :datetime.desc)
 
 	haml :index
 end
@@ -68,7 +69,7 @@ get '/post/:id/edit' do
 end
 
 put '/post/:id' do
-  @post = Post.find(params[:id]).first
+  @post = Post.get(params[:id])
   if @post.update(params[:post])
     status 201
     redirect '/'

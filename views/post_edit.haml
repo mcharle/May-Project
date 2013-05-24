@@ -5,11 +5,19 @@
     Title:
     %input{type: "text", name: "post[title]", placeholder: "title", value: @post.title}
     %br
-    Date:
-    %input{type: "date", name: "post[date]", value: @post.date}
+    / Date:
+    / %input{type: "date", name: "post[date]", value: @post.date}
+    / %br
+    / Time:
+    / %input{type: "time", name: "time", value: @post.time}
+    / %br
+    Date/Time:
+    %input{type: "datetime-local", name: "datetime", value: @post.datetime}
     %br
     Content:
     %br
     %textarea{name: "post[content]", rows: "10", cols: "20"} #{@post.content}
     %br
-    %input{type: "submit", value: "Edit Post"}
+    %img{ name: 'post[image]', src: @post.image }
+    %br
+    %input{type: "submit", value: "Update"}
