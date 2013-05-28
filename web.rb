@@ -18,15 +18,13 @@ class Post
 
   property :id,         Serial
   property :title,      String
-  # property :date,       Date
   property :content,    Text
   property :tag,        String
-  # property :time,       Time
   property :datetime,   DateTime
 
   mount_uploader :image, PostpicUploader
 
-  has n, :posts, :through => Resource
+  has n, :tags, :through => Resource
 
 end
 
@@ -37,7 +35,7 @@ class Tag
   property :id,       Serial
   property :category, String
 
-  has n, :tags, :through => Resource
+  has n, :posts, :through => Resource
 end
 
 DataMapper.finalize
