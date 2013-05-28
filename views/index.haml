@@ -5,29 +5,19 @@
   .content
     I am a soon-to-be graduate of the University of Chicago Laboratory Schools and I will be concentrating in Computer Science at Brown University in the Fall. In my free time I read, hang out with my friends, play my harp, entertain my cats and program. I'm currently interning at dscout and I'm really enjoying it!
 
-.post
-  .date
-    5/14/2013
-  .title
-    Sample Post
-  .picture
-    %img{src: "images/friends.jpg", height: "260"}
-  .content
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent orci ipsum, commodo eu imperdiet sed, vehicula eget urna. Sed imperdiet rutrum ipsum quis tempus. Vestibulum at sem ligula. Morbi libero est, adipiscing nec molestie id, venenatis sed urna. Aenean at arcu magna. Nullam id massa nec nulla elementum vulputate nec nec lectus. Nam tortor quam, elementum interdum lobortis vestibulum, placerat vitae lectus. Aliquam aliquet, lorem eget iaculis suscipit, sapien enim elementum mauris, ac ornare est leo nec neque. Curabitur tempus magna eu mauris vestibulum dapibus. In eu augue ante. Vivamus mollis posuere ante eu dignissim. Suspendisse id nulla lorem, ut molestie odio. Donec risus nisi, pulvinar ac tincidunt id, mollis ac mauris. Aliquam molestie blandit nibh, at iaculis mi euismod ac. Maecenas sed neque nec ipsum bibendum sodales. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-
 - @posts.each do |post|
   .post
     .date= "#{post.datetime.to_date.month}/#{post.datetime.to_date.day}/#{post.datetime.to_date.year}"
     .title
-      %a{href: "/post/#{post.id}"}= post.title 
-    .content= post.content
+      %a{href: "/post/#{post.id}"}= post.title
     .picture
-      %img{src:"#{post.image}"}
-    %form{action: "/post/#{post.id}/edit", method: "get"}
-      %input{type: 'submit', value: 'Edit', class: 'button'}
-    %form{action: "/post/#{post.id}", method: "post"}
-      %input{type: 'submit', name: "_method", value: 'delete', class: 'button'}
-      %input{type: 'hidden', value: '_method', method: 'delete'}
+      %img{src:"#{post.image}"} 
+    .content= post.content
+    / %form{action: "/post/#{post.id}/edit", method: "get"}
+    /   %input{type: 'submit', value: 'Edit', class: 'button'}
+    / %form{action: "/post/#{post.id}", method: "post"}
+    /   %input{type: 'submit', name: "_method", value: 'delete', class: 'button'}
+    /   %input{type: 'hidden', value: '_method', method: 'delete'}
 
 %script{src: "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"}
 :javascript

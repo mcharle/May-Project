@@ -85,7 +85,7 @@ get '/post/:id' do
 end
 
 delete '/post/:id' do
-  Post.find(params[:id]).first.destroy
+  Post.get(params[:id]).destroy
   redirect '/'
 end
 

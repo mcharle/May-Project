@@ -1,7 +1,9 @@
 - $pagetitle = "Post id: #{@post.id}"
 .post
-  .date #{@post.date.month}/#{@post.date.day}/#{@post.date.year}
+  .date #{@post.datetime.to_date.month}/#{@post.datetime.to_date.day}/#{@post.datetime.to_date.year}
   .title #{@post.title} 
+  .picture
+    %img{src:"#{@post.image}"} 
   .content #{@post.content}
   %form{action: "/post/#{@post.id}/edit", method: "get"}
     %input{type: 'submit', name: "_method", value: 'edit', class: 'button'}
