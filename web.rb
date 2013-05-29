@@ -2,7 +2,7 @@ require 'bundler'
 
 Bundler.require
 
-DataMapper.setup(:default, 'postgres://localhost/blog')
+DataMapper.setup(:default, ENV['DATABASE_URL'])
 # DataMapper.setup(:default, 'sqlite:///Users/merylcharleston/Documents/May-Project/db/mp.db')
 
 #require_relative "lib/postpic_uploader"
