@@ -1,0 +1,39 @@
+%button{type: "button", id: "start", onClick: "setMap(55th - 56th - 57th St Metra, East 56th Street, Chicago, IL; changeAnswer('55th/56th/57th Street Station')"}Start
+
+
+%img{id: "map", src: "http://maps.googleapis.com/maps/api/staticmap?center=Chicago,IL&zoom=12&size=400x400&sensor=false"}
+
+
+
+
+%script{type: "text/javascript"}
+:javascript
+  var centerLoc="Chicago, IL";
+  var zoom = "12";
+  function changeAnswer(text){
+    document.getElementById("answer").innerHTML=text;
+    console.log("hi");
+  }
+  function getValues(){
+    var val = document.getElementById("box1Val").value;
+    document.getElementById("output").innerHTML = "Value is: "+val;
+    document.getElementById("box1").style.width = val+"px";
+  }
+  function setMap(loc, zoomval){
+    centerLoc = loc;
+    zoom = zoomval;
+    getMap();
+  }
+  function getMap(){
+    var mag = zoom;
+    var address = centerLoc;
+    encodeURI(address);
+    var URLString = "http://maps.googleapis.com/maps/api/staticmap?";
+    URLString += "center="+address+"&";
+    URLString += "zoom="+mag+"&";
+    URLString += "size=500x500&";
+    //URLString += "size="+width+"x"+height+"&";
+    URLString += "markers=color:orange%7C"+address+"&";
+    URLString += "sensor=false";
+    document.getElementById("map").src = URLString;
+  }

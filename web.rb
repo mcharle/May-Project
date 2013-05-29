@@ -2,7 +2,8 @@ require 'bundler'
 
 Bundler.require
 
-DataMapper.setup(:default, 'sqlite:///Users/merylcharleston/Documents/mayproject/db/mp.db')
+DataMapper.setup(:default, 'postgres://localhost/blog')
+# DataMapper.setup(:default, 'sqlite:///Users/merylcharleston/Documents/May-Project/db/mp.db')
 
 #require_relative "lib/postpic_uploader"
 
@@ -19,13 +20,9 @@ class Post
   property :id,         Serial
   property :title,      String
   property :content,    Text
-  property :tag,        String
   property :datetime,   DateTime
 
   mount_uploader :image, PostpicUploader
-
-  has n, :tags, :through => Resource
-
 end
 
 
@@ -96,6 +93,10 @@ post '/post/create' do
   else
     redirect '/post/new'
   end
+end
+
+get '/map' do
+  haml :temp
 end
 
 get '/commute' do
