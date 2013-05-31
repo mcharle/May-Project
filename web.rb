@@ -76,7 +76,7 @@ get '/post/:id' do
   haml :post_id
 end
 
-get '/admin' do
+get '/post/:id/admin' do
   @pagetitle = "Post #{params[:id]}"
   @post = Post.get(params[:id])
   haml :admin
