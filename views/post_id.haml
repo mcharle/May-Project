@@ -1,6 +1,6 @@
 - $pagetitle = "Post id: #{@post.id}"
 .post
-  .date= post.formatted_date
+  .date #{@post.formatted_date}
   .title #{@post.title} 
   .picture
     %img{src:"#{@post.image}"} 

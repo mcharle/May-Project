@@ -7,8 +7,13 @@ DataMapper.setup(:default, ENV['DATABASE_URL'])
 CarrierWave.configure do |config|
   config.fog_credentials = {
     :provider               => 'AWS',                        # required
+<<<<<<< HEAD
     :aws_access_key_id      => ENV['S3_ACCESS_KEY'],                        # required
     :aws_secret_access_key  => ENV['S3_SECURITY_ACCESS_KEY'],                        # required
+=======
+    :aws_access_key_id      => 'AKIAJQSKL6FOIY2CSCSQ',                        # required
+    :aws_secret_access_key  => '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',                        # required
+>>>>>>> 4aade0dccbec4c7d99c93aa407fbbbcde45a36d2
   }
   config.fog_directory  = 'mayproject'                     # required
 end
@@ -75,6 +80,7 @@ get '/post/:id' do
   @post = Post.get(params[:id])
   haml :post_id
 end
+
 get '/post/:id/admin' do
   @pagetitle = "Post #{params[:id]}"
   @post = Post.get(params[:id])
