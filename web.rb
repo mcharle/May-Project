@@ -26,16 +26,10 @@ class Post
   property :datetime,   DateTime
 
   mount_uploader :image, PostpicUploader
-end
 
-
-class Tag
-  include DataMapper::Resource
-
-  property :id,       Serial
-  property :category, String
-
-  has n, :posts, :through => Resource
+  def formatted_date
+    datetime.strftime('%m/%d/%Y') if datetime
+  end
 end
 
 DataMapper.finalize
@@ -80,6 +74,11 @@ get '/post/:id' do
   @pagetitle = "Post #{params[:id]}"
   @post = Post.get(params[:id])
   haml :post_id
+end
+get '/post/:id/admin' do
+  @pagetitle = "Post #{params[:id]}"
+  @post = Post.get(params[:id])
+  haml :admin
 end
 
 delete '/post/:id' do

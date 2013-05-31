@@ -7,7 +7,7 @@
 
 - @posts.each do |post|
   .post
-    .date= "#{post.datetime.to_date.month}/#{post.datetime.to_date.day}/#{post.datetime.to_date.year}"
+    .date= post.formatted_date
     .title
       %a{href: "/post/#{post.id}"}= post.title
     .picture
