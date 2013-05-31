@@ -3,15 +3,18 @@ require 'bundler'
 Bundler.require
 
 DataMapper.setup(:default, ENV['DATABASE_URL'])
-# DataMapper.setup(:default, 'sqlite:///Users/merylcharleston/Documents/May-Project/db/mp.db')
 
-#require_relative "lib/postpic_uploader"
+CarrierWave.configure do |config|
+  config.fog_credentials = {
+    :provider               => 'AWS',                        # required
+    :aws_access_key_id      => ENV['S3_ACCESS_KEY'],                        # required
+    :aws_secret_access_key  => ENV['S3_SECURITY_ACCESS_KEY'],                        # required
+  }
+  config.fog_directory  = 'mayproject'                     # required
+end
 
 class PostpicUploader < CarrierWave::Uploader::Base
-  storage :file
-  def store_dir
-    'uploads'
-  end
+  storage :fog
 end
 
 class Post

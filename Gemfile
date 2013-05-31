@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'data_mapper'
 # gem 'dm-sqlite-adapter'
+gem 'fog'
 gem 'dm-postgres-adapter'
 gem 'haml'
 gem 'sass'
