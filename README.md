@@ -7,3 +7,4 @@ for the last month of their senior year. My project was creating a blog that I c
 The Blog
 ===========
 Each dated post consists of <b>text</b>, which describes what I did that day and a <b>picture</b> that goes with the description. It's written in Ruby and I used a gem called carrierwave to upload pictures. I had to have an Amazon AWS account for this to work, so the pictures are no longer visible, but the posts are.
+Check it out at <a href="http://mayproject.herokuapp.com">mayproject.herokuapp.com</a>
